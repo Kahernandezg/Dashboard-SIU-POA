@@ -9,13 +9,14 @@ import {
   getReportYearsFromDb,
   getReportByYearFromDb,
   upsertReportInDb,
+  deleteReportFromDb,
   getChangeLogsFromDb,
   addChangeLogToDb,
+  getActiveSectionsFromDisk,
+  saveActiveSectionsToDisk,
 } from './src/db/reports.ts';
-import { db } from './src/db/index.ts';
-import { reports, changeLogs } from './src/db/schema.ts';
-import { eq } from 'drizzle-orm';
 import { createSample2026Data, cloneYearStructure } from './src/services/sampleData.ts';
+
 
 dotenv.config();
 
@@ -255,7 +256,7 @@ app.delete('/api/reports/:year', async (req, res) => {
       return res.status(400).json({ error: 'Año inválido' });
     }
 
-    await db.delete(reports).where(eq(reports.year, year));
+    await deleteReportFromDb(year);
     await addChangeLogToDb({
       year,
       module: 'AÑO',
@@ -281,6 +282,27 @@ app.get('/api/reports/:year/changelogs', async (req, res) => {
   } catch (error: any) {
     console.error('Error in GET changelogs:', error);
     return res.status(500).json({ error: error.message || 'Failed to fetch changelogs' });
+  }
+});
+
+// Obtener configuración de hojas de trabajo activas en SIU
+app.get('/api/settings/active-sections', (_req, res) => {
+  const sections = getActiveSectionsFromDisk();
+  return res.json({ activeSections: sections });
+});
+
+// Guardar configuración de hojas de trabajo activas en SIU
+app.post('/api/settings/active-sections', (req, res) => {
+  try {
+    const { activeSections } = req.body;
+    if (!Array.isArray(activeSections)) {
+      return res.status(400).json({ error: 'activeSections debe ser un arreglo' });
+    }
+    saveActiveSectionsToDisk(activeSections);
+    return res.json({ success: true, activeSections });
+  } catch (error: any) {
+    console.error('Error in POST /api/settings/active-sections:', error);
+    return res.status(500).json({ error: error.message || 'Error guardando hojas activas' });
   }
 });
 
@@ -314,8 +336,9 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT} (mode: ${isProd ? 'production' : 'development'})`);
+  const host = '0.0.0.0';
+  app.listen(Number(PORT), host, () => {
+    console.log(`Server listening on http://${host}:${PORT} (mode: ${isProd ? 'production' : 'development'})`);
   });
 }
 

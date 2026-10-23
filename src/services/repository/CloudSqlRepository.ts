@@ -44,8 +44,18 @@ export class CloudSqlReportsRepository implements IReportsRepository {
         const localTime = new Date(localData.lastModified || 0).getTime();
         const remoteTime = new Date(remoteData.lastModified || 0).getTime();
 
-        // If local data is newer, keep local and upload it to Cloud SQL
-        if (localTime > remoteTime) {
+        const isRemoteFactory =
+          remoteData.modifiedBy === 'Plantilla Inicial CRAI' ||
+          remoteData.modifiedBy === 'Sistema CRAI (Inicial)' ||
+          remoteData.lastModified === '2026-01-01T00:00:00.000Z';
+
+        const isLocalUserEdited =
+          localData.modifiedBy !== 'Plantilla Inicial CRAI' &&
+          localData.modifiedBy !== 'Sistema CRAI (Inicial)' &&
+          localData.lastModified !== '2026-01-01T00:00:00.000Z';
+
+        // If local data is newer or local data was edited by user while remote is factory template
+        if (localTime > remoteTime || (isLocalUserEdited && isRemoteFactory)) {
           fetch(`/api/reports/${year}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -53,13 +63,18 @@ export class CloudSqlReportsRepository implements IReportsRepository {
               data: localData,
               user: localData.modifiedBy || 'Kevin Hernández',
             }),
-          }).catch((e) => console.warn('Background sync to Cloud SQL failed:', e));
+          }).catch((e) => console.warn('Background sync to server failed:', e));
           return localData;
         }
       }
 
       // If remote data is newer or local didn't exist, update local cache with remote data
       if (remoteData) {
+        // Preservar seccionesActivas locales si existían y remote no las tiene
+        if (localData?.siu?.seccionesActivas && (!remoteData.siu || !remoteData.siu.seccionesActivas)) {
+          if (!remoteData.siu) (remoteData as any).siu = {};
+          remoteData.siu.seccionesActivas = localData.siu.seccionesActivas;
+        }
         await this.fallbackRepo.saveYearData(remoteData);
         return remoteData;
       }

@@ -29,8 +29,17 @@ export const Navbar: React.FC<NavbarProps> = ({
   currentSectionData,
   currentSectionId,
 }) => {
-  const { user, signInWithGoogle, signOutUser, loading: authLoading } = useAuth();
+  const {
+    user,
+    signInWithGoogle,
+    signOutUser,
+    loading: authLoading,
+    isSuperAdmin,
+    activePersona,
+    switchPersona,
+  } = useAuth();
   const [showUserMenu, setShowUserMenu] = useState(false);
+
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs border-b border-slate-200 dark:border-slate-800 transition-colors">
@@ -145,41 +154,97 @@ export const Navbar: React.FC<NavbarProps> = ({
             />
           )}
 
-          {/* Autenticación Google Firebase & Cloud SQL */}
-          {user ? (
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => setShowUserMenu(!showUserMenu)}
-                className="flex items-center gap-2 p-1 pl-1.5 pr-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700/80 transition-colors text-xs font-medium cursor-pointer"
-                title={user.email || 'Usuario conectado'}
+          {/* Autenticación Google Firebase & Roles */}
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setShowUserMenu(!showUserMenu)}
+              className={`flex items-center gap-2 p-1 pl-1.5 pr-2.5 rounded-lg border transition-colors text-xs font-medium cursor-pointer ${
+                isSuperAdmin
+                  ? 'border-amber-400/50 bg-amber-500/10 dark:bg-amber-500/15 text-amber-900 dark:text-amber-200'
+                  : 'border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-200'
+              }`}
+              title={`${activePersona.name} (${activePersona.email}) - ${activePersona.role}`}
+            >
+              <div
+                className={`w-5 h-5 rounded-full text-white flex items-center justify-center text-[10px] font-bold ${
+                  isSuperAdmin ? 'bg-amber-600' : 'bg-[#234a80]'
+                }`}
               >
-                {user.photoURL ? (
-                  <img
-                    src={user.photoURL}
-                    alt={user.displayName || 'Usuario'}
-                    className="w-5 h-5 rounded-full object-cover border border-[#234a80]"
-                  />
-                ) : (
-                  <div className="w-5 h-5 rounded-full bg-[#234a80] text-white flex items-center justify-center text-[10px] font-bold">
-                    {(user.displayName || user.email || 'U')[0].toUpperCase()}
-                  </div>
-                )}
-                <span className="max-w-[100px] truncate text-slate-800 dark:text-slate-200 text-[11px] hidden sm:inline">
-                  {user.displayName?.split(' ')[0] || user.email?.split('@')[0]}
+                {activePersona.name[0].toUpperCase()}
+              </div>
+              <div className="flex flex-col text-left">
+                <span className="max-w-[100px] truncate text-[11px] font-semibold leading-tight hidden sm:inline">
+                  {activePersona.name.split(' ')[0]}
                 </span>
-              </button>
+                <span
+                  className={`text-[9px] font-mono leading-none ${
+                    isSuperAdmin ? 'text-amber-600 dark:text-amber-400 font-bold' : 'text-slate-500 dark:text-slate-400'
+                  }`}
+                >
+                  {isSuperAdmin ? 'SUPERADMIN' : 'USUARIO'}
+                </span>
+              </div>
+            </button>
 
-              {showUserMenu && (
-                <div className="absolute right-0 mt-1.5 w-56 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-2 z-50 text-xs">
-                  <div className="px-3 py-2 border-b border-slate-100 dark:border-slate-800">
+            {showUserMenu && (
+              <div className="absolute right-0 mt-1.5 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-2 z-50 text-xs">
+                <div className="px-3 py-2 border-b border-slate-100 dark:border-slate-800">
+                  <div className="flex items-center justify-between gap-1">
                     <p className="font-semibold text-slate-900 dark:text-white truncate">
-                      {user.displayName || 'Usuario UCA'}
+                      {activePersona.name}
                     </p>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
-                      {user.email}
-                    </p>
+                    <span
+                      className={`text-[9px] px-1.5 py-0.5 rounded font-mono font-bold ${
+                        isSuperAdmin
+                          ? 'bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-700'
+                          : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
+                      }`}
+                    >
+                      {activePersona.role}
+                    </span>
                   </div>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
+                    {activePersona.email}
+                  </p>
+                </div>
+
+                {/* Simulador de roles para verificar reglas */}
+                <div className="px-3 py-2 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40">
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">
+                    Cambiar usuario / Rol (Prueba de Reglas)
+                  </p>
+                  <div className="space-y-1">
+                    {[
+                      { email: 'kahernandezg@uca.edu.sv', name: 'Kevin H. (Superadmin)', role: 'Superadmin' },
+                      { email: 'adiaz@uca.edu.sv', name: 'América D. (Jefatura)', role: 'Usuario' },
+                      { email: 'scampos@uca.edu.sv', name: 'Silvia C.', role: 'Usuario' },
+                      { email: 'gihernandez@uca.edu.sv', name: 'Gerson H.', role: 'Usuario' },
+                    ].map((p) => {
+                      const isCur = activePersona.email.toLowerCase() === p.email.toLowerCase();
+                      return (
+                        <button
+                          key={p.email}
+                          type="button"
+                          onClick={() => {
+                            switchPersona(p.email);
+                            setShowUserMenu(false);
+                          }}
+                          className={`w-full text-left px-2 py-1 rounded text-[11px] flex items-center justify-between transition-colors cursor-pointer ${
+                            isCur
+                              ? 'bg-[#234a80] text-white font-semibold'
+                              : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'
+                          }`}
+                        >
+                          <span className="truncate">{p.name}</span>
+                          <span className="text-[9px] opacity-80">{p.email.split('@')[0]}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {user ? (
                   <button
                     type="button"
                     onClick={async () => {
@@ -189,23 +254,26 @@ export const Navbar: React.FC<NavbarProps> = ({
                     className="w-full text-left px-3 py-2 flex items-center gap-2 text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/20 transition-colors cursor-pointer"
                   >
                     <LogOut className="w-3.5 h-3.5" />
-                    <span>Cerrar sesión</span>
+                    <span>Cerrar sesión de Google</span>
                   </button>
-                </div>
-              )}
-            </div>
-          ) : (
-            <button
-              type="button"
-              disabled={authLoading}
-              onClick={() => signInWithGoogle()}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-lg text-white bg-[#234a80] hover:bg-[#1b3b66] border border-[#234a80] transition-colors cursor-pointer shadow-2xs"
-              title="Iniciar sesión con Google para sincronizar perfiles de investigación"
-            >
-              <LogIn className="w-3.5 h-3.5 text-[#e06d26]" />
-              <span className="hidden sm:inline">Acceder</span>
-            </button>
-          )}
+                ) : (
+                  <button
+                    type="button"
+                    disabled={authLoading}
+                    onClick={() => {
+                      setShowUserMenu(false);
+                      signInWithGoogle();
+                    }}
+                    className="w-full text-left px-3 py-2 flex items-center gap-2 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/20 transition-colors cursor-pointer"
+                  >
+                    <LogIn className="w-3.5 h-3.5" />
+                    <span>Iniciar sesión con cuenta Google</span>
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+
 
           {/* Toggle Modo Oscuro / Claro interactivo con texto y contraste */}
           <button

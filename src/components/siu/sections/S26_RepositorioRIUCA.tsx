@@ -1,9 +1,101 @@
 import React from 'react';
-import { RepositorioRIUCASIU, DocumentoRIUCASIU, MESES_CORTO } from '../../../types';
+import { RepositorioRIUCASIU, DocumentoRIUCASIU, IndexadoraRegistroSIU, MESES_CORTO } from '../../../types';
 import { EditableTable, ColumnDef } from '../../common/EditableTable';
 import { KPICard } from '../../common/KPICard';
 import { PlotlyChart } from '../../common/PlotlyChart';
 import { Archive, TrendingUp, Layers, BookOpen } from 'lucide-react';
+import { IndexadorasManager } from '../common/IndexadorasManager';
+
+const DEFAULT_RIUCA_INDEXADORAS: IndexadoraRegistroSIU[] = [
+  {
+    id: 'idx-r-1',
+    nombre: 'LA Referencia',
+    tipo: 'Cosechadora',
+    mesInclusion: 'Enero',
+    protocolo: 'OAI-PMH (Driver 2.0)',
+    estado: 'Activo',
+    meses: [45, 62, 78, 85, 94, 112, 58, 89, 105, 98, 76, 42],
+    comentarios: 'Nodo nacional El Salvador integrado mediante protocolo OAI-PMH. Metadatos validados periódicamente.',
+    enlace: 'https://www.lareferencia.info',
+  },
+  {
+    id: 'idx-r-2',
+    nombre: 'OpenAIRE',
+    tipo: 'Cosechadora',
+    mesInclusion: 'Febrero',
+    protocolo: 'OAI-PMH (OpenAIRE 4.0)',
+    estado: 'Activo',
+    meses: [38, 54, 70, 78, 88, 104, 52, 80, 95, 90, 68, 38],
+    comentarios: 'Infraestructura europea y global de ciencia abierta. Cosecha automática mensual programada.',
+    enlace: 'https://explore.openaire.eu',
+  },
+  {
+    id: 'idx-r-3',
+    nombre: 'BASE (Bielefeld Academic Search Engine)',
+    tipo: 'Agregador',
+    mesInclusion: 'Enero',
+    protocolo: 'OAI-PMH (Dublin Core)',
+    estado: 'Activo',
+    meses: [45, 60, 75, 82, 90, 110, 55, 85, 100, 95, 72, 40],
+    comentarios: 'Uno de los mayores motores de búsqueda académica del mundo operado por la Biblioteca de la Univ. de Bielefeld.',
+    enlace: 'https://www.base-search.net',
+  },
+  {
+    id: 'idx-r-4',
+    nombre: 'CORE (COnnecting REpositories)',
+    tipo: 'Agregador',
+    mesInclusion: 'Marzo',
+    protocolo: 'REST API / OAI-PMH',
+    estado: 'Activo',
+    meses: [0, 0, 65, 74, 82, 98, 48, 75, 90, 84, 62, 35],
+    comentarios: 'Indexación del texto completo de tesis y artículos. Integración completada en el primer trimestre.',
+    enlace: 'https://core.ac.uk',
+  },
+  {
+    id: 'idx-r-5',
+    nombre: 'Google Scholar',
+    tipo: 'Indexadora',
+    mesInclusion: 'Enero',
+    protocolo: 'Sitemap / HTML Meta',
+    estado: 'Activo',
+    meses: [42, 58, 74, 80, 91, 108, 54, 86, 102, 94, 73, 40],
+    comentarios: 'Rastreo quincenal mediante sitemap.xml y etiquetas citation_* de DSpace.',
+    enlace: 'https://scholar.google.com',
+  },
+  {
+    id: 'idx-r-6',
+    nombre: 'WorldCat (OCLC)',
+    tipo: 'Directorio',
+    mesInclusion: 'Abril',
+    protocolo: 'OAI-PMH (MARC21/DC)',
+    estado: 'Activo',
+    meses: [0, 0, 0, 70, 79, 92, 45, 68, 82, 78, 58, 30],
+    comentarios: 'Cosecha de registros de tesis doctorales y monografías UCA.',
+    enlace: 'https://www.worldcat.org',
+  },
+  {
+    id: 'idx-r-7',
+    nombre: 'Dialnet',
+    tipo: 'Indexadora',
+    mesInclusion: 'Febrero',
+    protocolo: 'OAI-PMH / FTP',
+    estado: 'Activo',
+    meses: [0, 48, 62, 70, 80, 95, 46, 72, 85, 80, 60, 32],
+    comentarios: 'Difusión de producción científica y humanística hispana.',
+    enlace: 'https://dialnet.unirioja.es',
+  },
+  {
+    id: 'idx-r-8',
+    nombre: 'Directorio OpenDOAR',
+    tipo: 'Directorio',
+    mesInclusion: 'Enero',
+    protocolo: 'Registro OAI',
+    estado: 'Activo',
+    meses: [45, 62, 78, 85, 94, 112, 58, 89, 105, 98, 76, 42],
+    comentarios: 'Directorio mundial de repositorios de acceso abierto de la Universidad de Nottingham / Jisc.',
+    enlace: 'https://v2.sherpa.ac.uk/opendoar/',
+  },
+];
 
 interface S26Props {
   data: RepositorioRIUCASIU;
@@ -158,6 +250,14 @@ export const S26_RepositorioRIUCA: React.FC<S26Props> = ({ data, onChange, year 
     onChange({
       ...data,
       crecimientoMensual: updatedMonths,
+    });
+  };
+
+  const handleIndexadorasChange = (updatedList: IndexadoraRegistroSIU[], comentarios?: string) => {
+    onChange({
+      ...data,
+      indexadoras: updatedList,
+      comentariosIndexadoras: comentarios !== undefined ? comentarios : data.comentariosIndexadoras,
     });
   };
 
@@ -364,6 +464,17 @@ export const S26_RepositorioRIUCA: React.FC<S26Props> = ({ data, onChange, year 
           />
         </div>
       </div>
+
+      {/* Indicador: Indexadoras, Cosechadoras de Datos y Agregadores (Hexbin + Treemap) */}
+      <IndexadorasManager
+        title="Indexadoras, Cosechadoras de Datos y Agregadores que Incluyen a RIUCA"
+        subtitle="Monitoreo mensual de plataformas de ciencia abierta que cosechan metadatos y publicaciones de RIUCA (Enero a Diciembre)"
+        platformName="RIUCA"
+        indexadoras={data.indexadoras || DEFAULT_RIUCA_INDEXADORAS}
+        comentarios={data.comentariosIndexadoras}
+        onChange={handleIndexadorasChange}
+        year={year}
+      />
 
       {/* Tabla Editable de Documentos Indexados con Detección de Duplicados */}
       <EditableTable

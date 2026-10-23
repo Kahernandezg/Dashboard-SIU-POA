@@ -20,28 +20,28 @@
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
-,TIPOS DE PUBLICACIÓN,Línea base de Publicaciones 2025,Proyección de publicaciones 2026,,,,,,,,,,,,,,,,,,
+,TIPOS DE PUBLICACIï¿½N,Lï¿½nea base de Publicaciones 2025,Proyecciï¿½n de publicaciones 2026,,,,,,,,,,,,,,,,,,
 ,Conjunto de datos,4,5,,,,,,,,,,,,,,,,,,
-,Artículo externo (indexado),3,4,,,,,,,,,,,,,,,,,,
+,Artï¿½culo externo (indexado),3,4,,,,,,,,,,,,,,,,,,
 ,Otros,3,3,,,,,,,,,,,,,,,,,,
-,Informe de investigación,3,5,,,,,,,,,,,,,,,,,,
-,Artículo UCA,1,1,,,,,,,,,,,,,,,,,,
+,Informe de investigaciï¿½n,3,5,,,,,,,,,,,,,,,,,,
+,Artï¿½culo UCA,1,1,,,,,,,,,,,,,,,,,,
 ,Libro,0,1,,,,,,,,,,,,,,,,,,
-,Monografía,0,0,,,,,,,,,,,,,,,,,,
+,Monografï¿½a,0,0,,,,,,,,,,,,,,,,,,
 ,Total general,14,19,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,PENDIENTE DE DEFINIR,,,,,,,,,,,,,,,,,,
-TIPOS DE PUBLICACIÓN,Resultados de Publicaciones del 2026,Proyección de publicaciones 2026,Proyección de publicaciones 2027,,,,,,,,,,,,,,,,,,
+TIPOS DE PUBLICACIï¿½N,Resultados de Publicaciones del 2026,Proyecciï¿½n de publicaciones 2026,Proyecciï¿½n de publicaciones 2027,,,,,,,,,,,,,,,,,,
 Conjunto de datos,0,5,0,,,,,,,,,,,,,,,,,,
-Artículo externo (indexados y no indexados),12,4,0,,,,,,,,,,,,,,,,,,
+Artï¿½culo externo (indexados y no indexados),12,4,0,,,,,,,,,,,,,,,,,,
 Otros,1,3,0,,,,,,,,,,,,,,,,,,
-Informe de investigación,9,5,0,,,,,,,,,,,,,,,,,,
-Artículo UCA,8,1,0,,,,,,,,,,,,,,,,,,
+Informe de investigaciï¿½n,9,5,0,,,,,,,,,,,,,,,,,,
+Artï¿½culo UCA,8,1,0,,,,,,,,,,,,,,,,,,
 Libros y capitulos,5,1,0,,,,,,,,,,,,,,,,,,
-Monografía,0,0,0,,,,,,,,,,,,,,,,,,
+Monografï¿½a,0,0,0,,,,,,,,,,,,,,,,,,
 Total general,35,19,30,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
@@ -68,20 +68,20 @@ Total general,35,19,30,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
-,"Proyección de depositos de Investigaciones en Micelio 2025,2026",,,,,,,,,,,,,,,,,,,,
+,"Proyecciï¿½n de depositos de Investigaciones en Micelio 2025,2026",,,,,,,,,,,,,,,,,,,,
 ,Investigaciones Micelio/UCA,ENERO,FEBRERO,MARZO,ABRIL,MAYO,JUNIO,JULIO,AGOSTO,SEPTIEMBRE,OCTUBRE,NOVIEMBRE,DICIEMBRE,TOTAL ANUAL,,,,,,,
-Línea base2025,Línea base,-,-,-,-,-,-,-,3,3,,,,6,,,,,,,
-2026 Proyección,Proyección,0,0,0,0,0,1,1,0,3,2,2,0,9,,,,,,,
+Lï¿½nea base2025,Lï¿½nea base,-,-,-,-,-,-,-,3,3,,,,6,,,,,,,
+2026 Proyecciï¿½n,Proyecciï¿½n,0,0,0,0,0,1,1,0,3,2,2,0,9,,,,,,,
 Resultados del 2026,Resultados,0,1,0,1,0,3,0,0,2,0,0,0,7,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
-,"Proyección de depositos de Investigaciones en Micelio 2026,2027",,,,,,,,,,,,,,,,,,,,
+,"Proyecciï¿½n de depositos de Investigaciones en Micelio 2026,2027",,,,,,,,,,,,,,,,,,,,
 ,Investigaciones Micelio/UCA,ENERO,FEBRERO,MARZO,ABRIL,MAYO,JUNIO,JULIO,AGOSTO,SEPTIEMBRE,OCTUBRE,NOVIEMBRE,DICIEMBRE,TOTAL ANUAL,,,,,,,
-Línea base 2026,Línea base,-,-,-,-,-,-,-,,,,,,0,,,,,,,
-2027 Proyección,Proyección,,,,,,,,,,,,,0,,,,,,,
+Lï¿½nea base 2026,Lï¿½nea base,-,-,-,-,-,-,-,,,,,,0,,,,,,,
+2027 Proyecciï¿½n,Proyecciï¿½n,,,,,,,,,,,,,0,,,,,,,
 Resultados del 2027,Resultados,,,,,,,,,,,,,0,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
@@ -104,11 +104,11 @@ Resultados del 2027,Resultados,,,,,,,,,,,,,0,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
-Indicadores de adopción base 2025,Cantidad de académicos e investigadores 2025,Porcentaje % 2024-2025,Cantidad de académicos e investigadores 2026,Porcentaje proyectado % 2026,,,,"Proyección de Cantidad de académicos e investigadores registrados y visibilizados en Micelio 2026,2027",,,,,,,,,,,,,
-Tasa de registro de perfiles en Micelio,88,47.83%,100,54.35%,+12 investigadores más  (6.52%+),,,Investigaciones Micelio/UCA,ENERO,FEBRERO,MARZO,ABRIL,MAYO,JUNIO,JULIO,AGOSTO,SEPTIEMBRE,OCTUBRE,NOVIEMBRE,DICIEMBRE,TOTAL ANUAL
-Tasa de conversión de registro a creación de  perfil,71,38.59%,88,47.83%,+17 investigadores más (9.24%+),,Línea base 2026,Línea base,-,-,-,-,-,-,-,,8,,,,8
-Resultado observado de registro de perfiles en Micelio 2026,,,0,0.00%,0 investigadores se han registado en Micelio durante ene-jun 2026,,2027 Proyección,Proyección,,,,,,,,,,,,,0
-Resultado observado de conversión de registro a perfiles en Micelio 2026,,,0,0.00%,0 investigadores han convertido su registro en un perfil de investigador en Micelio durante ene-jun 2026,,Resultados del 2027,Resultados,,,,,,,,,,,,,0
+Indicadores de adopciï¿½n base 2025,Cantidad de acadï¿½micos e investigadores 2025,Porcentaje % 2024-2025,Cantidad de acadï¿½micos e investigadores 2026,Porcentaje proyectado % 2026,,,,"Proyecciï¿½n de Cantidad de acadï¿½micos e investigadores registrados y visibilizados en Micelio 2026,2027",,,,,,,,,,,,,
+Tasa de registro de perfiles en Micelio,88,47.83%,100,54.35%,+12 investigadores mï¿½s  (6.52%+),,,Investigaciones Micelio/UCA,ENERO,FEBRERO,MARZO,ABRIL,MAYO,JUNIO,JULIO,AGOSTO,SEPTIEMBRE,OCTUBRE,NOVIEMBRE,DICIEMBRE,TOTAL ANUAL
+Tasa de conversiï¿½n de registro a creaciï¿½n de  perfil,71,38.59%,88,47.83%,+17 investigadores mï¿½s (9.24%+),,Lï¿½nea base 2026,Lï¿½nea base,-,-,-,-,-,-,-,,8,,,,8
+Resultado observado de registro de perfiles en Micelio 2026,,,0,0.00%,0 investigadores se han registado en Micelio durante ene-jun 2026,,2027 Proyecciï¿½n,Proyecciï¿½n,,,,,,,,,,,,,0
+Resultado observado de conversiï¿½n de registro a perfiles en Micelio 2026,,,0,0.00%,0 investigadores han convertido su registro en un perfil de investigador en Micelio durante ene-jun 2026,,Resultados del 2027,Resultados,,,,,,,,,,,,,0
 ,,,,,,,,,,,,,,,,,,,,,
 ,88,,12,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
@@ -122,26 +122,26 @@ Resultado observado de conversión de registro a perfiles en Micelio 2026,,,0,0.0
 Subactividad,"Depositar, describir y dar seguimiento en Micelio a 9 Publicaciones retrospectivas realizadas hasta 2024, lo cual representa el 47.37% del total proyectado para 2026. ",,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
-Subactividad,"Depositar, describir y dar seguimiento en Micelio a 10 publicaciones de proyectos en ejecución hasta 2025, lo cual representa el 52.63% del total proyectado para 2026. ",,,,,,,,,,,,,,,,,,,,
+Subactividad,"Depositar, describir y dar seguimiento en Micelio a 10 publicaciones de proyectos en ejecuciï¿½n hasta 2025, lo cual representa el 52.63% del total proyectado para 2026. ",,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
-Subactividad,Incrementar en 3 investigaciones más que representa un 66.67% de la línea base 2024 de investigaciones depositadas en Micelio,,,,,,,,,,,,,,,,,,,,
+Subactividad,Incrementar en 3 investigaciones mï¿½s que representa un 66.67% de la lï¿½nea base 2024 de investigaciones depositadas en Micelio,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
-,Analísis cualtitativo,,,,,,,,,,,,,,,,,,,,
+,Analï¿½sis cualtitativo,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
-,Descripción de logro del objetivo del periodo:,,,,,,,,,,,,,,,,,,,,
+,Descripciï¿½n de logro del objetivo del periodo:,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,CONSIDERANDO 1000 CARACTERES SOLICITADOS NE POA 2026,,,,,,,,,,,,,,
-,"Durante el periodo enero-junio no se observó un avance significativo en el registro de nuevos investigadores en Micelio y aunque la meta planteada era incorporar 12 personas adicionales, al cierre del periodo aún no se había concretado este incremento. La plataforma sí permitió evidenciar un comportamiento sostenido en la visibilidad de los perfiles académicos, alcanzando 846 visualizaciones acumuladas. Entre los perfiles más consultados destacan Lizeth Rodríguez con 50 vistas, Óscar Meléndez con 43 y Violeta Chichiqué con 42. 
+,"Durante el periodo enero-junio no se observï¿½ un avance significativo en el registro de nuevos investigadores en Micelio y aunque la meta planteada era incorporar 12 personas adicionales, al cierre del periodo aï¿½n no se habï¿½a concretado este incremento. La plataforma sï¿½ permitiï¿½ evidenciar un comportamiento sostenido en la visibilidad de los perfiles acadï¿½micos, alcanzando 846 visualizaciones acumuladas. Entre los perfiles mï¿½s consultados destacan Lizeth Rodrï¿½guez con 50 vistas, ï¿½scar Melï¿½ndez con 43 y Violeta Chichiquï¿½ con 42. 
 
-En relación con el indicador de número de investigaciones el resultado observado alcanzó precisamente 5 proyectos adicionales. Esto evidencia un avance favorable en la incorporación y visibilización de investigaciones dentro de la plataforma. 
+En relaciï¿½n con el indicador de nï¿½mero de investigaciones el resultado observado alcanzï¿½ precisamente 5 proyectos adicionales. Esto evidencia un avance favorable en la incorporaciï¿½n y visibilizaciï¿½n de investigaciones dentro de la plataforma. 
 
-Para el indicador de publicaciones depositadas en Micelio, se registró un total de 6 publicaciones durante el periodo enero-junio de 2026. La proyección anual contempla 19 publicaciones adicionales, por lo que aún resta incorporar 13 publicaciones para alcanzar la meta establecida. Aunque el avance es parcial, ya existe una base inicial que permite proyectar un trabajo de recuperación y depósito más sostenido durante el resto del año.",,,,,,,,,,,,,,,,,,,,
+Para el indicador de publicaciones depositadas en Micelio, se registrï¿½ un total de 6 publicaciones durante el periodo enero-junio de 2026. La proyecciï¿½n anual contempla 19 publicaciones adicionales, por lo que aï¿½n resta incorporar 13 publicaciones para alcanzar la meta establecida. Aunque el avance es parcial, ya existe una base inicial que permite proyectar un trabajo de recuperaciï¿½n y depï¿½sito mï¿½s sostenido durante el resto del aï¿½o.",,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,"Durante enero-junio no se observó un avance significativo en el registro de nuevos investigadores en Micelio; aunque la meta era incorporar 12 personas, al cierre no se concretó. La plataforma sí mostró un comportamiento sostenido en la visibilidad de perfiles, con 846 visualizaciones acumuladas. Entre los más consultados destacan Lizeth Rodríguez (50), Óscar Meléndez (43) y Violeta Chichiqué (42). En cuanto al indicador de investigaciones, se sumaron 5 proyectos adicionales, reflejando un avance favorable en la incorporación y visibilización. Respecto a publicaciones, se registraron 6 durante el periodo, con una proyección anual de 19. Aún restan 13 para alcanzar la meta, pero ya existe una base inicial que permite proyectar un trabajo de recuperación y depósito más sostenido en lo que resta del año.",,,,,,,,,,,,,,
+,,,,,,,"Durante enero-junio no se observï¿½ un avance significativo en el registro de nuevos investigadores en Micelio; aunque la meta era incorporar 12 personas, al cierre no se concretï¿½. La plataforma sï¿½ mostrï¿½ un comportamiento sostenido en la visibilidad de perfiles, con 846 visualizaciones acumuladas. Entre los mï¿½s consultados destacan Lizeth Rodrï¿½guez (50), ï¿½scar Melï¿½ndez (43) y Violeta Chichiquï¿½ (42). En cuanto al indicador de investigaciones, se sumaron 5 proyectos adicionales, reflejando un avance favorable en la incorporaciï¿½n y visibilizaciï¿½n. Respecto a publicaciones, se registraron 6 durante el periodo, con una proyecciï¿½n anual de 19. Aï¿½n restan 13 para alcanzar la meta, pero ya existe una base inicial que permite proyectar un trabajo de recuperaciï¿½n y depï¿½sito mï¿½s sostenido en lo que resta del aï¿½o.",,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
@@ -153,10 +153,10 @@ Para el indicador de publicaciones depositadas en Micelio, se registró un total 
 ,,,,,,,,,,,,,,,,,,,,,
 ,Dificultades encontradas (internas y externas):,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
-,"La principal dificultad se relaciona con la temporalidad de los proyectos de investigación de la VRII, los cuales inician a partir de marzo de cada año. Esta dinámica ha limitado la posibilidad de cerrar procesos anteriores o de incorporar nuevos registros de manera oportuna durante el primer semestre. A ello se suma que algunos equipos de investigación aún se encuentran en ejecución, lo que retrasa la actualización y visibilización completa de los perfiles de investigadores que aún no se registran. 
+,"La principal dificultad se relaciona con la temporalidad de los proyectos de investigaciï¿½n de la VRII, los cuales inician a partir de marzo de cada aï¿½o. Esta dinï¿½mica ha limitado la posibilidad de cerrar procesos anteriores o de incorporar nuevos registros de manera oportuna durante el primer semestre. A ello se suma que algunos equipos de investigaciï¿½n aï¿½n se encuentran en ejecuciï¿½n, lo que retrasa la actualizaciï¿½n y visibilizaciï¿½n completa de los perfiles de investigadores que aï¿½n no se registran. 
 
-Una de las principales limitaciones ha sido la duración de los proyectos, ya que algunos tienen una ejecución de un año y otros de hasta dos años. Esta situación dificulta el cierre o actualización de información en tiempos concretos. Además, el seguimiento a proyectos retrospectivos continúa siendo un reto, aunque también representa una oportunidad para recuperar y visibilizar investigaciones registradas desde 2012.
- La principal dificultad radica en que aún no se ha logrado completar el depósito de todas las publicaciones previstas para el periodo 2026. Esto se asocia a que muchas de las publicaciones derivadas de investigación se consiven al finalizar el proyecto en muchas ocasiones en puntos intermedio de la investigación por lo que notar un incremento en los primeros meses siempre será casi nulo, además el icremento inicial muchas veces se trata del seguimiento de publicaciones de proyectos retrospectivos o informes de investigación de una convocatoria anterior.",,,,,,"La principal dificultad está vinculada a la temporalidad y duración de los proyectos de investigación, que inician en marzo y se extienden entre uno y dos años, lo que retrasa el cierre de procesos y la incorporación oportuna de nuevos registros en el primer semestre. Esto afecta la actualización de perfiles de investigadores y la visibilización de resultados. El seguimiento de proyectos retrospectivos continúa siendo un reto, aunque también una oportunidad para recuperar investigaciones desde 2012. Asimismo, no se ha logrado completar el depósito de todas las publicaciones previstas para 2026, ya que muchas se conciben al finalizar los proyectos o en etapas intermedias, lo que explica que el incremento inicial sea mínimo y que gran parte provenga de publicaciones retrospectivas o informes de convocatorias anteriores.",,,,,,,,,,,,,,
+Una de las principales limitaciones ha sido la duraciï¿½n de los proyectos, ya que algunos tienen una ejecuciï¿½n de un aï¿½o y otros de hasta dos aï¿½os. Esta situaciï¿½n dificulta el cierre o actualizaciï¿½n de informaciï¿½n en tiempos concretos. Ademï¿½s, el seguimiento a proyectos retrospectivos continï¿½a siendo un reto, aunque tambiï¿½n representa una oportunidad para recuperar y visibilizar investigaciones registradas desde 2012.
+ La principal dificultad radica en que aï¿½n no se ha logrado completar el depï¿½sito de todas las publicaciones previstas para el periodo 2026. Esto se asocia a que muchas de las publicaciones derivadas de investigaciï¿½n se consiven al finalizar el proyecto en muchas ocasiones en puntos intermedio de la investigaciï¿½n por lo que notar un incremento en los primeros meses siempre serï¿½ casi nulo, ademï¿½s el icremento inicial muchas veces se trata del seguimiento de publicaciones de proyectos retrospectivos o informes de investigaciï¿½n de una convocatoria anterior.",,,,,,"La principal dificultad estï¿½ vinculada a la temporalidad y duraciï¿½n de los proyectos de investigaciï¿½n, que inician en marzo y se extienden entre uno y dos aï¿½os, lo que retrasa el cierre de procesos y la incorporaciï¿½n oportuna de nuevos registros en el primer semestre. Esto afecta la actualizaciï¿½n de perfiles de investigadores y la visibilizaciï¿½n de resultados. El seguimiento de proyectos retrospectivos continï¿½a siendo un reto, aunque tambiï¿½n una oportunidad para recuperar investigaciones desde 2012. Asimismo, no se ha logrado completar el depï¿½sito de todas las publicaciones previstas para 2026, ya que muchas se conciben al finalizar los proyectos o en etapas intermedias, lo que explica que el incremento inicial sea mï¿½nimo y que gran parte provenga de publicaciones retrospectivas o informes de convocatorias anteriores.",,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
@@ -172,11 +172,11 @@ Una de las principales limitaciones ha sido la duración de los proyectos, ya que
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,"
-Se mantuvo el seguimiento a la plataforma Micelio como un espacio de visibilización académica, permitiendo registrar y monitorear el comportamiento de las consultas a los perfiles de investigadores. Asimismo, se identificaron los perfiles con mayor nivel de visualización, lo cual aporta insumos para fortalecer estrategias futuras de actualización, difusión y registro de investigadores. 
+Se mantuvo el seguimiento a la plataforma Micelio como un espacio de visibilizaciï¿½n acadï¿½mica, permitiendo registrar y monitorear el comportamiento de las consultas a los perfiles de investigadores. Asimismo, se identificaron los perfiles con mayor nivel de visualizaciï¿½n, lo cual aporta insumos para fortalecer estrategias futuras de actualizaciï¿½n, difusiï¿½n y registro de investigadores. 
 
-Se realizó seguimiento a los proyectos en ejecución y a aquellos de carácter retrospectivo, con el fin de ampliar el alcance histórico de la producción investigativa institucional. Esta acción ha contribuido no solo al cumplimiento de la meta, sino también a la consolidación de un registro en Micelio más completo y representativo de la investigación institucional.
+Se realizï¿½ seguimiento a los proyectos en ejecuciï¿½n y a aquellos de carï¿½cter retrospectivo, con el fin de ampliar el alcance histï¿½rico de la producciï¿½n investigativa institucional. Esta acciï¿½n ha contribuido no solo al cumplimiento de la meta, sino tambiï¿½n a la consolidaciï¿½n de un registro en Micelio mï¿½s completo y representativo de la investigaciï¿½n institucional.
 
-Se está propiciando el siguimiento tanto de publicaciones de proyectos de convocatorias recientes, como de proyectos retrospectivos, para incrementar el output de producción visible en Micelio con la finalidad de generar trazabilidad en la producción científica de cada proyecto y equipo de investigación.",,,,,,"Se mantuvo el seguimiento a la plataforma Micelio como espacio de visibilización académica, registrando y monitoreando consultas a perfiles de investigadores. Se identificaron los perfiles con mayor visualización, aportando insumos para fortalecer estrategias de actualización, difusión y registro. Se dio seguimiento a proyectos en ejecución y retrospectivos, ampliando el alcance histórico de la producción institucional y consolidando un registro más completo en Micelio. Además, se impulsó el seguimiento de publicaciones de convocatorias recientes y proyectos retrospectivos, incrementando la producción visible y generando trazabilidad en la investigación de cada proyecto y equipo.",,,,,,,,,,,,,,
+Se estï¿½ propiciando el siguimiento tanto de publicaciones de proyectos de convocatorias recientes, como de proyectos retrospectivos, para incrementar el output de producciï¿½n visible en Micelio con la finalidad de generar trazabilidad en la producciï¿½n cientï¿½fica de cada proyecto y equipo de investigaciï¿½n.",,,,,,"Se mantuvo el seguimiento a la plataforma Micelio como espacio de visibilizaciï¿½n acadï¿½mica, registrando y monitoreando consultas a perfiles de investigadores. Se identificaron los perfiles con mayor visualizaciï¿½n, aportando insumos para fortalecer estrategias de actualizaciï¿½n, difusiï¿½n y registro. Se dio seguimiento a proyectos en ejecuciï¿½n y retrospectivos, ampliando el alcance histï¿½rico de la producciï¿½n institucional y consolidando un registro mï¿½s completo en Micelio. Ademï¿½s, se impulsï¿½ el seguimiento de publicaciones de convocatorias recientes y proyectos retrospectivos, incrementando la producciï¿½n visible y generando trazabilidad en la investigaciï¿½n de cada proyecto y equipo.",,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,

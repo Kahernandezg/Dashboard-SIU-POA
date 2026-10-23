@@ -351,6 +351,24 @@ export function exportSIUConsolidatedExcel(data: YearData) {
     ['Listado de documentos indexados'],
     ['No.', 'Título del Documento', 'Enlace Handle', 'Comunidad', 'Colección', 'Financiamiento', 'Fecha Publicación', 'Área MINED'],
     ...siu.s26_repositorioRIUCA.documentos.map((d) => [d.no, d.titulo, d.handle, d.comunidad, d.coleccion, d.financiamiento, d.fecha, `Área ${d.areaMined}`]),
+    ...(siu.s26_repositorioRIUCA.indexadoras && siu.s26_repositorioRIUCA.indexadoras.length > 0
+      ? [
+          [],
+          ['INDEXADORAS, COSECHADORAS Y AGREGADORES QUE INCLUYEN A RIUCA'],
+          ['Plataforma / Red', 'Tipo', 'Inclusión', 'Protocolo', 'Estado', ...MESES_COMPLETO, 'Total Anual', 'Comentarios'],
+          ...siu.s26_repositorioRIUCA.indexadoras.map((i) => [
+            i.nombre,
+            i.tipo,
+            i.mesInclusion,
+            i.protocolo,
+            i.estado,
+            ...(i.meses || []),
+            (i.meses || []).reduce((a, b) => a + (Number(b) || 0), 0),
+            i.comentarios || '',
+          ]),
+          ...(siu.s26_repositorioRIUCA.comentariosIndexadoras ? [[], ['Bitácora General:', siu.s26_repositorioRIUCA.comentariosIndexadoras]] : []),
+        ]
+      : []),
   ];
 
   // 7. Micelio
@@ -376,6 +394,24 @@ export function exportSIUConsolidatedExcel(data: YearData) {
       const ga = siu.s27_micelio.paisesAnalytics[idx];
       return [pm.pais, pm.vistas, ga?.pais || '', ga?.vistas || ''];
     }),
+    ...(siu.s27_micelio.indexadoras && siu.s27_micelio.indexadoras.length > 0
+      ? [
+          [],
+          ['INDEXADORAS, COSECHADORAS Y AGREGADORES QUE INCLUYEN A MICELIO'],
+          ['Plataforma / Red', 'Tipo', 'Inclusión', 'Protocolo', 'Estado', ...MESES_COMPLETO, 'Total Anual', 'Comentarios'],
+          ...siu.s27_micelio.indexadoras.map((i) => [
+            i.nombre,
+            i.tipo,
+            i.mesInclusion,
+            i.protocolo,
+            i.estado,
+            ...(i.meses || []),
+            (i.meses || []).reduce((a, b) => a + (Number(b) || 0), 0),
+            i.comentarios || '',
+          ]),
+          ...(siu.s27_micelio.comentariosIndexadoras ? [[], ['Bitácora General:', siu.s27_micelio.comentariosIndexadoras]] : []),
+        ]
+      : []),
   ];
 
   // 8. Desarrollo de colecciones

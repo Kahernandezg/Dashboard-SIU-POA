@@ -1,8 +1,89 @@
 import React, { useState } from 'react';
-import { MicelioRepositorioSIU, POAData, MESES_CORTO } from '../../../types';
+import { MicelioRepositorioSIU, POAData, IndexadoraRegistroSIU, MESES_CORTO } from '../../../types';
 import { KPICard } from '../../common/KPICard';
 import { PlotlyChart } from '../../common/PlotlyChart';
-import { Globe, RefreshCw, BarChart2, Eye, MapPin, DownloadCloud } from 'lucide-react';
+import { Globe, RefreshCw, BarChart2, Eye, MapPin, DownloadCloud, Network } from 'lucide-react';
+import { IndexadorasManager } from '../common/IndexadorasManager';
+
+const DEFAULT_MICELIO_INDEXADORAS: IndexadoraRegistroSIU[] = [
+  {
+    id: 'idx-m-1',
+    nombre: 'DataCite',
+    tipo: 'Indexadora',
+    mesInclusion: 'Enero',
+    protocolo: 'REST API (DataCite 4.4)',
+    estado: 'Activo',
+    meses: [12, 18, 24, 20, 28, 35, 16, 26, 38, 34, 22, 14],
+    comentarios: 'Asignación oficial de DOIs institucionales para conjuntos de datos (datasets) y software de investigación.',
+    enlace: 'https://datacite.org',
+  },
+  {
+    id: 'idx-m-2',
+    nombre: 're3data (Registry of Research Data)',
+    tipo: 'Directorio',
+    mesInclusion: 'Enero',
+    protocolo: 'Certificación OAI',
+    estado: 'Activo',
+    meses: [10, 15, 20, 18, 25, 30, 14, 22, 32, 28, 19, 12],
+    comentarios: 'Registro internacional de repositorios de datos indexado con identificador global y metadata estándar.',
+    enlace: 'https://www.re3data.org',
+  },
+  {
+    id: 'idx-m-3',
+    nombre: 'LA Referencia - Datos de Investigación',
+    tipo: 'Cosechadora',
+    mesInclusion: 'Febrero',
+    protocolo: 'OAI-PMH (DataCite Schema)',
+    estado: 'Activo',
+    meses: [0, 16, 22, 19, 26, 32, 15, 24, 35, 30, 20, 13],
+    comentarios: 'Cosecha regional de datasets científicos latinoamericanos vinculados al nodo nacional.',
+    enlace: 'https://www.lareferencia.info',
+  },
+  {
+    id: 'idx-m-4',
+    nombre: 'OpenAIRE Research Graph',
+    tipo: 'Cosechadora',
+    mesInclusion: 'Marzo',
+    protocolo: 'OAI-PMH / REST API',
+    estado: 'Activo',
+    meses: [0, 0, 20, 17, 24, 29, 13, 21, 31, 27, 18, 11],
+    comentarios: 'Interconexión de conjuntos de datos con publicaciones y proyectos de investigación VRII UCA.',
+    enlace: 'https://graph.openaire.eu',
+  },
+  {
+    id: 'idx-m-5',
+    nombre: 'Google Dataset Search',
+    tipo: 'Indexadora',
+    mesInclusion: 'Enero',
+    protocolo: 'Schema.org (Dataset JSON-LD)',
+    estado: 'Activo',
+    meses: [12, 17, 23, 19, 27, 34, 15, 25, 36, 32, 21, 13],
+    comentarios: 'Indexación directa a través de metadatos embebidos Schema.org estructurados en cada registro de Micelio.',
+    enlace: 'https://datasetsearch.research.google.com',
+  },
+  {
+    id: 'idx-m-6',
+    nombre: 'Dataverse Global Network',
+    tipo: 'Agregador',
+    mesInclusion: 'Abril',
+    protocolo: 'OAI-PMH Dataverse',
+    estado: 'Activo',
+    meses: [0, 0, 0, 18, 25, 31, 14, 23, 33, 29, 19, 12],
+    comentarios: 'Federación internacional de repositorios de datos abiertos de investigación.',
+    enlace: 'https://dataverse.org',
+  },
+  {
+    id: 'idx-m-7',
+    nombre: 'Mendeley Data',
+    tipo: 'Agregador',
+    mesInclusion: 'Mayo',
+    protocolo: 'REST API',
+    estado: 'En proceso',
+    meses: [0, 0, 0, 0, 15, 20, 9, 16, 22, 19, 13, 8],
+    comentarios: 'Cosechador de datasets indexados con enlace al DOI emitido por DataCite.',
+    enlace: 'https://data.mendeley.com',
+  },
+];
 
 interface S27Props {
   data: MicelioRepositorioSIU;
@@ -13,7 +94,7 @@ interface S27Props {
 }
 
 export const S27_Micelio: React.FC<S27Props> = ({ data, poaData, onChange, onSyncWithPOA, year }) => {
-  const [activeTab, setActiveTab] = useState<'publicaciones' | 'proyectos' | 'regiones' | 'paises' | 'ciudades'>('publicaciones');
+  const [activeTab, setActiveTab] = useState<'publicaciones' | 'proyectos' | 'regiones' | 'paises' | 'ciudades' | 'indexadoras'>('publicaciones');
 
   const calculateRowTotal = (meses: number[]) => meses.reduce((a, b) => a + (Number(b) || 0), 0);
 
@@ -54,6 +135,15 @@ export const S27_Micelio: React.FC<S27Props> = ({ data, poaData, onChange, onSyn
     list[rowIndex] = { ...list[rowIndex], vistas: num };
     updated.vistasRegion = list;
     onChange(updated);
+  };
+
+  // Manejo de cambios en indexadoras y cosechadoras
+  const handleIndexadorasChange = (updatedList: IndexadoraRegistroSIU[], comentarios?: string) => {
+    onChange({
+      ...data,
+      indexadoras: updatedList,
+      comentariosIndexadoras: comentarios !== undefined ? comentarios : data.comentariosIndexadoras,
+    });
   };
 
   // 1. Gráfico de Barras por Región con paleta UCA
@@ -142,7 +232,7 @@ export const S27_Micelio: React.FC<S27Props> = ({ data, poaData, onChange, onSyn
       </div>
 
       {/* KPIs */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         <KPICard
           title="Total Publicaciones Micelio"
           value={totPublicaciones}
@@ -171,10 +261,19 @@ export const S27_Micelio: React.FC<S27Props> = ({ data, poaData, onChange, onSyn
           meta="Micelio & Google Analytics"
           icon={MapPin}
         />
+        <div onClick={() => setActiveTab('indexadoras')} className="cursor-pointer transition-transform hover:scale-[1.01]" title="Haga clic para ver el módulo de Indexadoras, Hexbin y Treemap">
+          <KPICard
+            title="Indexadoras & Redes"
+            value={(data.indexadoras || DEFAULT_MICELIO_INDEXADORAS).length}
+            subtitle="Cosechadoras y agregadores (Ver Treemap)"
+            meta="DataCite, OpenAIRE, re3data..."
+            icon={Network}
+          />
+        </div>
       </div>
 
       {/* Selector de Sub-pestañas de Micelio */}
-      <div className="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl overflow-x-auto max-w-3xl">
+      <div className="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl overflow-x-auto max-w-5xl">
         <button
           type="button"
           onClick={() => setActiveTab('publicaciones')}
@@ -229,6 +328,18 @@ export const S27_Micelio: React.FC<S27Props> = ({ data, poaData, onChange, onSyn
           }`}
         >
           5. Ciudades de Consulta
+        </button>
+        <button
+          type="button"
+          onClick={() => setActiveTab('indexadoras')}
+          className={`flex-1 px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap text-center cursor-pointer flex items-center justify-center gap-1.5 ${
+            activeTab === 'indexadoras'
+              ? 'bg-white dark:bg-slate-900 text-[#234a80] dark:text-[#9bc2f7] shadow-xs font-semibold'
+              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+          }`}
+        >
+          <Network className="w-3.5 h-3.5 text-[#e06d26]" />
+          <span>6. Indexadoras & Cosechadoras</span>
         </button>
       </div>
 
@@ -528,6 +639,19 @@ export const S27_Micelio: React.FC<S27Props> = ({ data, poaData, onChange, onSyn
             </tbody>
           </table>
         </div>
+      )}
+
+      {/* 6. Indexadoras, Cosechadoras y Agregadores (Hexbin + Treemap) */}
+      {activeTab === 'indexadoras' && (
+        <IndexadorasManager
+          title="Indexadoras, Cosechadoras de Datos y Agregadores que Incluyen a Micelio"
+          subtitle="Seguimiento mensual de plataformas globales de ciencia abierta que cosechan metadatos, DOIs DataCite y conjuntos de datos de Micelio"
+          platformName="Micelio"
+          indexadoras={data.indexadoras || DEFAULT_MICELIO_INDEXADORAS}
+          comentarios={data.comentariosIndexadoras}
+          onChange={handleIndexadorasChange}
+          year={year}
+        />
       )}
 
       {/* Gráfico Comparativo Interanual de Visitas */}

@@ -8,21 +8,30 @@ declare global {
 }
 
 // Function to create or retrieve the connection pool using the Object Method
-export const createPool = () => {
-  if (!global._postgresPool) {
-    global._postgresPool = new Pool({
-      host: process.env.SQL_HOST,
-      user: process.env.SQL_USER,
-      password: process.env.SQL_PASSWORD,
-      database: process.env.SQL_DB_NAME,
-      max: 10,
-      connectionTimeoutMillis: 15000,
-    });
+export const createPool = (): Pool | null => {
+  if (!process.env.SQL_HOST) {
+    return null;
+  }
 
-    // Prevent unhandled pool-level errors from crashing the application
-    global._postgresPool.on('error', (err) => {
-      console.error('Unexpected error on idle SQL pool client:', err);
-    });
+  if (!global._postgresPool) {
+    try {
+      global._postgresPool = new Pool({
+        host: process.env.SQL_HOST,
+        user: process.env.SQL_USER,
+        password: process.env.SQL_PASSWORD,
+        database: process.env.SQL_DB_NAME,
+        max: 10,
+        connectionTimeoutMillis: 5000,
+      });
+
+      // Prevent unhandled pool-level errors from crashing the application
+      global._postgresPool.on('error', (err) => {
+        console.warn('Unexpected error on idle SQL pool client:', err);
+      });
+    } catch (err) {
+      console.warn('Failed to initialize PostgreSQL pool:', err);
+      return null;
+    }
   }
   return global._postgresPool;
 };
@@ -30,5 +39,6 @@ export const createPool = () => {
 // Create or retrieve the pool instance lazily.
 const pool = createPool();
 
-// Initialize Drizzle with the pool and schema.
-export const db = drizzle(pool, { schema });
+// Initialize Drizzle with the pool and schema if pool is available.
+export const db = pool ? drizzle(pool, { schema }) : null;
+

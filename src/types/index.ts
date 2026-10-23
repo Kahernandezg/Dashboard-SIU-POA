@@ -184,9 +184,23 @@ export interface DocumentoRIUCASIU {
   areaMined: number; // 1-10
 }
 
+export interface IndexadoraRegistroSIU {
+  id: string;
+  nombre: string; // Ej: OpenAIRE, LA Referencia, BASE, CORE, Google Scholar, DataCite, WorldCat
+  tipo: 'Indexadora' | 'Cosechadora' | 'Agregador' | 'Directorio';
+  meses: number[]; // 12 meses (Ene-Dic) de registros cosechados/transferidos
+  mesInclusion: string; // Mes en que fue integrada / cosechada
+  protocolo: string; // 'OAI-PMH', 'REST API', 'Sitemap / RSS', 'FTP / Directo'
+  estado: 'Activo' | 'En proceso' | 'En evaluación';
+  comentarios?: string;
+  enlace?: string;
+}
+
 export interface RepositorioRIUCASIU {
   documentos: DocumentoRIUCASIU[];
   crecimientoMensual: number[]; // 12 meses
+  indexadoras?: IndexadoraRegistroSIU[];
+  comentariosIndexadoras?: string;
 }
 
 export interface RegionVistas {
@@ -219,6 +233,8 @@ export interface MicelioRepositorioSIU {
   loMasDescargado: Array<{ id: string; publicacion: string; descargas: number }>;
   eventos: Array<{ id: string; tipo: string; meses: number[] }>;
   softwareHerramientas: Array<{ id: string; tipo: string; meses: number[] }>;
+  indexadoras?: IndexadoraRegistroSIU[];
+  comentariosIndexadoras?: string;
 }
 
 export interface DesarrolloColeccionesSIU {
@@ -366,7 +382,9 @@ export interface DefinicionCatalogoSIU {
 
 export interface SIUData {
   cabecera: CabeceraSIU;
+  seccionesActivas?: string[]; // IDs de las hojas activas (ej: ['2.0', '2.1', ...])
   controlReportes: ReporteControlSIU[];
+
   s21_formacion: FormacionPersonalSIU[];
   s22_planMejora: PlanMejoraCdASIU[];
   s23_recursosElectronicos: RecursoElectronicoSIU[];
