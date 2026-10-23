@@ -1,0 +1,6 @@
+{
+  "name": "CRAI UCA - Gestión POA & SIU",
+  "description": "Sistema de captura, cálculo y visualización de indicadores para informes POA y SIU del CRAI de la UCA (El Salvador).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
